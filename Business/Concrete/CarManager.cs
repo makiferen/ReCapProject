@@ -39,6 +39,15 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-     
+        public List<Car> GetAllByCategoryId(int id)
+        {
+            return _carDal.GetAll(p => p.BrandId == id);
+
+        }
+
+        public List<Car> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+        }
     }
 }
